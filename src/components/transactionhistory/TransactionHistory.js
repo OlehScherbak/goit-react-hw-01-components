@@ -1,4 +1,6 @@
-export default function TransitionHistory({ transactions }) {
+import PropTypes from 'prop-types';
+
+export default function TransactionHistory({ items }) {
   return (
     <table className="transaction-history">
       <thead>
@@ -10,15 +12,18 @@ export default function TransitionHistory({ transactions }) {
       </thead>
 
       <tbody>
-        {transactions.map(({ id, type, amount, currency }) => (
+        {items.map(({ id, type, amount, currency }) => (
           <tr key={id}>
             <td>{type}</td>
             <td>{amount}</td>
             <td>{currency}</td>
           </tr>
         ))}
-        ;
       </tbody>
     </table>
   );
 }
+
+TransactionHistory.propTypes = {
+  items: PropTypes.array.isRequired,
+};
